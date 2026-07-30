@@ -18,7 +18,7 @@
     }
     html { height: 100%; }
     
-    /* CSS SAMPUL SURAT DIGITAL (WAX SEAL) */
+    /* CSS SAMPUL SURAT DIGITAL (WAX SEAL SAHAJA) */
     .envelope-overlay {
       position: fixed;
       inset: 0;
@@ -36,44 +36,15 @@
       opacity: 0;
       pointer-events: none;
     }
-    .envelope-box {
-      position: relative;
-      width: 90%;
-      max-width: 450px;
-      min-height: 380px;
-      background: linear-gradient(135deg, #F5F0E8 0%, #ede4d3 50%, #e8dcc8 100%);
-      border-radius: 12px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      border: 1px solid #d4af37;
-      overflow: hidden;
-    }
-    /* Garisan lipatan sampul (V sahaja) */
-    .envelope-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 50%;
-      background-image: 
-        linear-gradient(to bottom right, transparent 49.5%, rgba(201,169,110,0.3) 50%, transparent 50.5%),
-        linear-gradient(to bottom left, transparent 49.5%, rgba(201,169,110,0.3) 50%, transparent 50.5%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    /* Rekaan Cop Lilin Merah - Kedudukan bawah sikit */
+     /* Rekaan Cop Lilin Merah - Tengah Skrin */
     .wax-seal {
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 75px;
-      height: 75px;
+      position: relative;
+      width: 90px;
+      height: 90px;
       background: radial-gradient(circle at 30% 30%, #e53935, #991b1b);
       border-radius: 50%;
       border: 2px solid #7f1d1d;
-      box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 8px 15px rgba(0,0,0,0.4);
+      box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 8px 25px rgba(0,0,0,0.6);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -82,9 +53,10 @@
       transition: all 0.3s ease;
       animation: pulse-seal 2s infinite;
     }
+    /* Kesan Hover yang Statik (Dibuang kesan Scale dan Translate yang melompat) */
     .wax-seal:hover {
-      transform: translate(-50%, -50%) scale(1.1);
-      box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 10px 20px rgba(0,0,0,0.5);
+      box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 12px 30px rgba(0,0,0,0.8);
+      background: radial-gradient(circle at 30% 30%, #f44336, #b71c1c);
     }
     .wax-seal::after {
       content: 'Buka';
@@ -97,7 +69,7 @@
     }
     @keyframes pulse-seal {
       0% { box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 0 0 0 rgba(229,57,53, 0.4); }
-      70% { box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 0 0 15px rgba(229,57,53, 0); }
+      70% { box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 0 0 20px rgba(229,57,53, 0); }
       100% { box-shadow: inset 0 0 10px rgba(127,29,29,0.8), 0 0 0 0 rgba(229,57,53, 0); }
     }
 
@@ -229,28 +201,15 @@
  </head>
  <body style="overflow: hidden;"> <!-- Kunci skrol masa mula-mula buka -->
  
-<!-- SAMPUL SURAT DIGITAL (OVERLAY WAX SEAL) -->
+<!-- SAMPUL SURAT DIGITAL (OVERLAY WAX SEAL SAHAJA) -->
   <div id="envelope-screen" class="envelope-overlay">
-      <div class="envelope-box fade-in">
-          
-          <!-- Teks Bahagian Atas (Basmalah & Tajuk) -->
-          <div class="text-center relative z-10 w-full mb-4">
-              <p class="font-arabic text-2xl md:text-3xl font-bold mb-2" style="color: var(--champagne); text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Bismillahirrahmanirrahim</p>
-              <p class="font-playfair text-base sm:text-lg text-slate-700 font-bold uppercase tracking-widest">Jemputan Walimatul Urus</p>
-          </div>
-          
-          <!-- Nama Pengantin (Diturunkan supaya tidak terkena Cop Lilin) -->
-          <div class="text-center relative z-10 w-full mt-2 mb-12">
-              <h1 class="font-great-vibes text-5xl sm:text-6xl md:text-7xl" style="color: var(--rose-gold); text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Maisarah &amp; Raja</h1>
-          </div>
-          
-          <!-- Cop Lilin Merah di Bawah -->
-          <div onclick="bukaJemputan()" class="wax-seal" title="Pecahkan cop untuk buka"></div>
-          
-      </div>
+      
+      <!-- Cop Lilin Merah di Tengah -->
+      <div onclick="bukaJemputan()" class="wax-seal" title="Pecahkan cop untuk buka"></div>
       
       <!-- Notis Arahan Kepada Tetamu -->
-      <p class="text-white/80 font-poppins text-xs mt-8 fade-in animate-pulse tracking-widest uppercase">Sentuh cop merah untuk membuka jemputan</p>
+      <p class="text-white/90 font-poppins text-sm mt-12 fade-in animate-pulse tracking-widest uppercase text-center px-4">Sentuh cop merah untuk membuka jemputan</p>
+      
   </div>
 
   <div class="floral-bg"></div>
@@ -262,7 +221,7 @@
    
    <!-- ELEMEN AUDIO & BUTANG MUZIK TERAPUNG -->
    <audio id="bg-music" loop preload="auto">
-       <source src="lagu.mp3" type="audio/mpeg">
+       <source src="lagu" type="audio/mpeg">
        Pelayar web anda tidak menyokong elemen audio.
    </audio>
    <button id="music-toggle-btn" class="music-btn" onclick="toggleMusic()" title="Main/Henti Muzik">
@@ -927,16 +886,25 @@
       setTimeout(() => toast.remove(), 4000);
     }
 
-    function handleHeaderMapButton() {
+  function handleHeaderMapButton() {
       let mapUrl = 'https://maps.app.goo.gl/ajSbbnbw3C6FWgkD9?g_st=atm';
       if (headerData.peta && headerData.peta.trim()) { mapUrl = headerData.peta; }
-      copyToClipboard(mapUrl, '✓ Pautan peta disalin.');
+      window.open(mapUrl, '_blank');
     }
 
     function handleHeaderContactButton(noWhatsapp) {
       if (noWhatsapp && noWhatsapp.trim()) {
-        const cleanNumber = noWhatsapp.replace(/\D/g, '');
-        if (cleanNumber.length > 0) { const waUrl = `https://wa.me/${cleanNumber}`; copyToClipboard(waUrl, '✓ Pautan WhatsApp disalin.'); return; }
+        // Jika nombor bermula dengan 0, tukar kepada 60 (kod negara Malaysia)
+        let cleanNumber = noWhatsapp.replace(/\D/g, '');
+        if (cleanNumber.startsWith('0')) {
+            cleanNumber = '60' + cleanNumber.substring(1);
+        }
+        
+        if (cleanNumber.length > 0) { 
+          const waUrl = `https://wa.me/${cleanNumber}`; 
+          window.open(waUrl, '_blank'); 
+          return; 
+        }
       }
       showToast('Nombor WhatsApp tidak tersedia.', 'error');
     }
